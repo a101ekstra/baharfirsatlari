@@ -1642,7 +1642,7 @@ function renderGrid(list) {
     return `
     <div class="product-card" style="animation-delay:${Math.min(i * 0.05, 0.5)}s" onclick="openDetail(${p.id})">
       <div class="product-img-wrap">
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        <img src="${safeImageSrc(p.img)}" alt="${p.name}" loading="lazy">
         <button class="fav-btn ${favorites.has(p.id)?'active':''}" onclick="toggleFav(event,${p.id})">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         </button>
@@ -1982,7 +1982,7 @@ function renderCartPage(){
     const serviceOptions = getServiceOptions(item);
     return `<div class="cart-item">
       <div class="cart-item-top">
-        <div class="cart-item-img"><img src="${item.image}" alt="${item.name}" loading="lazy"></div>
+        <div class="cart-item-img"><img src="${safeImageSrc(item.image)}" alt="${item.name}" loading="lazy"></div>
         <div>
           <div class="cart-item-name">${item.name}</div>
           <div class="cart-item-meta">
@@ -2036,13 +2036,13 @@ function openDetail(id) {
   document.getElementById('dColorName').textContent = p.colorName;
 
   const mainImg = document.getElementById('dMainImg');
-  mainImg.src = p.img;
+  mainImg.src = safeImageSrc(p.img);
   mainImg.alt = p.name;
   mainImg.onerror = null;
 
   document.getElementById('dThumbs').innerHTML = p.colors.slice(0, 4).map((c, i) => `
     <div class="detail-thumb ${i===0?'active':''}" onclick="switchImg(this,'${c.img}','${fallback}')">
-      <img src="${c.img}" alt="${c.n}">
+      <img src="${safeImageSrc(c.img)}" alt="${c.n}">
     </div>`).join('');
 
   document.getElementById('dSwatches').innerHTML = '';
@@ -2109,7 +2109,7 @@ function switchImg(el, src, fb) {
   const img = document.getElementById('dMainImg');
   img.style.opacity = '0';
   setTimeout(() => {
-    img.src = src;
+    img.src = safeImageSrc(src);
     img.onerror = null;
     img.style.opacity = '1';
   }, 140);
@@ -2123,7 +2123,7 @@ function pickColor(el, name, src, fb) {
   const img = document.getElementById('dMainImg');
   img.style.opacity = '0';
   setTimeout(() => {
-    img.src = src;
+    img.src = safeImageSrc(src);
     img.onerror = null;
     img.style.opacity = '1';
   }, 140);
