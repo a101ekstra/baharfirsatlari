@@ -1422,7 +1422,7 @@ const PRODUCTS = [
     specs:[['Depolama','512 GB'],['RAM','12 GB'],['Ekran İç','8.0" Dynamic AMOLED 2X'],['Ekran Dış','6.5" AMOLED'],['İşlemci','Snapdragon 8 Elite'],['Kamera','200 MP Ana'],['Pil','4.400 mAh'],['5G','Evet']] },
 
   { id:29, brand:'Samsung', series:'Galaxy Z', storage:1000, name:'Samsung Galaxy Z Fold7 1 TB Gümüş', colorName:'Gümüş', origPrice:145999, price:116799,
-    img: si('p6pim/tr/sm-f966bzsetur/gallery/tr-galaxy-z-fold7-sm-f966-sm-f966bzsetur-thumb-545063820'), sku:'SGZFO71TBSV', isNew:false,
+    img:'images/products/Samsung Galaxy Z Fold7 1 TB Gümüş.jpg', sku:'SGZFO71TBSV', isNew:false,
     colors:[{n:'Gümüş',img:si('p6pim/tr/sm-f966bzsetur/gallery/tr-galaxy-z-fold7-sm-f966-sm-f966bzsetur-thumb-545063820')},{n:'Gece Siyahı',img:si('p6pim/tr/sm-f966bzkbtur/gallery/tr-galaxy-z-fold7-sm-f966-sm-f966bzkbtur-thumb-545063820')}],
     dots:['#9e9e9e','#1a1a1a'], dc:2, fallback:'https://images.samsung.com/is/image/samsung/assets/global/smartphones/galaxy-z-fold7/galaxy-z-fold7-highlights-design-silver.jpg',
     specs:[['Depolama','1 TB'],['RAM','12 GB'],['Ekran İç','8.0" Dynamic AMOLED 2X'],['Ekran Dış','6.5" AMOLED'],['İşlemci','Snapdragon 8 Elite'],['Kamera','200 MP Ana'],['Pil','4.400 mAh'],['5G','Evet']] },
@@ -1475,7 +1475,10 @@ function getBestImage(product){
 function normalizeProductImages(){
   PRODUCTS.forEach(product => {
     if (!product.fallback) product.fallback = getProductFallback(product);
-    product.img = getBestImage(product);
+    const hasLocalImage = typeof product.img === 'string' && product.img.indexOf('images/products/') !== -1;
+    if (!hasLocalImage) {
+      product.img = getBestImage(product);
+    }
     if (!Array.isArray(product.colors) || !product.colors.length) {
       product.colors = [{ n: product.colorName || 'Varsayılan', img: product.img }];
     }
