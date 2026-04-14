@@ -893,7 +893,6 @@ body{font-family:'Nunito',sans-serif;background:var(--gray-50);color:var(--gray-
         <div class="checkout-section">
           <div class="card-form-head">
             <div class="card-form-title" style="font-size:10px;font-weight:900;letter-spacing:.7px;text-transform:uppercase;color:#9CA3AF">KART BİLGİLERİ</div>
-            <img class="masterpass-logo" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Masterpass">
           </div>
           <div class="card-form">
             <div class="card-input" style="flex-direction:column;align-items:flex-start;gap:4px;padding-bottom:6px">
@@ -1791,6 +1790,7 @@ function submitPayment(){
     return;
   }
   if (cardExpiry.length < 5)  { showToast('⚠️ SK alanını doldurun (AA / YY).');   return; }
+  if (!ckIsValidExpiryDate(cardExpiry)) { showToast('⚠️ Son kullanma tarihi bulunduğumuz ay ve yıldan daha geride olamaz.'); return; }
   if (cardcvv.length < 3)     { showToast('⚠️ CVV girin.');                        return; }
 
   var ov = document.getElementById('payLoadingOverlay');
@@ -2543,6 +2543,19 @@ function ckUpdateCardNumberStatus(){
 function ckFmtExpiry(inp){
   var raw = inp.value.replace(/\D/g,'').slice(0,4);
   inp.value = raw.length >= 3 ? raw.slice(0,2) + ' / ' + raw.slice(2) : raw;
+}
+function ckIsValidExpiryDate(value){
+  var m = String(value || '').match(/^(\d{2})\s*\/\s*(\d{2})$/);
+  if (!m) return false;
+  var month = parseInt(m[1], 10);
+  var year = parseInt(m[2], 10);
+  if (month < 1 || month > 12) return false;
+  var now = new Date();
+  var currentMonth = now.getMonth() + 1;
+  var currentYear = now.getFullYear() % 100;
+  if (year < currentYear) return false;
+  if (year === currentYear && month < currentMonth) return false;
+  return true;
 }
 // Telefon: xxx xx xx formatı (+90 prefix sabit)
 function fmtPhone(inp){
