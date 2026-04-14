@@ -1481,6 +1481,10 @@ function normalizeProductImages(){
   });
 }
 
+function safeImageSrc(path){
+  return encodeURI(path || '').replace(/"/g, '%22');
+}
+
 function findCartItem(id){ return cart.find(item => item.id === id); }
 function getCartCount(){ return cart.reduce((sum, item) => sum + item.qty, 0); }
 function getCartSubtotal(){ return cart.reduce((sum, item) => sum + (item.price * item.qty), 0); }
