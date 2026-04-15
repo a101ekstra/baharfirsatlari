@@ -975,6 +975,7 @@ body{font-family:'Nunito',sans-serif;background:var(--gray-50);color:var(--gray-
       <div class="filter-body show">
         <label class="filter-check"><input type="checkbox" data-category="phone" onchange="applyFilters()"> Telefon</label>
         <label class="filter-check"><input type="checkbox" data-category="tv" onchange="applyFilters()"> Televizyon</label>
+        <label class="filter-check"><input type="checkbox" data-category="console" onchange="applyFilters()"> Oyun Konsolları</label>
       </div>
     </div>
 
@@ -983,6 +984,9 @@ body{font-family:'Nunito',sans-serif;background:var(--gray-50);color:var(--gray-
       <div class="filter-body show">
         <label class="filter-check"><input type="checkbox" data-brand="Apple" onchange="applyFilters()"> Apple</label>
         <label class="filter-check"><input type="checkbox" data-brand="Samsung" onchange="applyFilters()"> Samsung</label>
+        <label class="filter-check"><input type="checkbox" data-brand="Sony" onchange="applyFilters()"> Sony</label>
+        <label class="filter-check"><input type="checkbox" data-brand="PXN" onchange="applyFilters()"> PXN</label>
+        <label class="filter-check"><input type="checkbox" data-brand="Bambu Games" onchange="applyFilters()"> Bambu Games</label>
         <label class="filter-check"><input type="checkbox" data-brand="Xiaomi" onchange="applyFilters()"> Xiaomi</label>
         <label class="filter-check"><input type="checkbox" data-brand="LG" onchange="applyFilters()"> LG</label>
         <label class="filter-check"><input type="checkbox" data-brand="TCL" onchange="applyFilters()"> TCL</label>
@@ -1685,7 +1689,25 @@ const PRODUCTS = [
   { id:50, brand:"LG", series:"OLED evo 4K", storage:77, name:"LG OLED77M39LA 77\" 4K OLED evo Smart TV", colorName:"OLED evo", origPrice:211200, price:168960, img: '/shop/images/products/LG OLED77M39LA 77 4K OLED evo Smart TV.jpg', dots:["#111827", "#f59e0b", "#a855f7"], dc:"4", isNew:true, specs:["77 inç ekran", "4K Ultra HD", "OLED evo panel", "120 Hz yerel yenileme", "Kablosuz Zero Connect", "webOS", "Dolby Vision / Atmos"] },
   { id:51, brand:"LG", series:"QNED 4K webOS", storage:100, name:"LG 100QNED86A6A 100\" 4K QNED Smart TV", colorName:"QNED", origPrice:211190, price:168952, img: '/shop/images/products/LG 100QNED86A6A 100 4K QNED Smart TV.jpg', dots:["#111827", "#22c55e", "#38bdf8"], dc:"4", isNew:true, specs:["100 inç ekran", "4K Ultra HD", "QNED panel", "120 Hz yerel yenileme", "webOS", "HDR10 / HLG", "4x HDMI"] },
   { id:52, brand:"Samsung", series:"OLED 4K", storage:83, name:"Samsung QN83S90F 83\" 4K OLED Smart TV", colorName:"OLED", origPrice:210886, price:168708, img:'/shop/images/products/Samsung QN83S90F 83 4K OLED Smart TV.jpg', dots:["#111827", "#7c3aed", "#f472b6"], dc:"4", isNew:true, specs:["83 inç ekran", "4K Ultra HD", "OLED panel", "144 Hz VRR", "NQ4 AI işlemci", "Tizen Smart TV", "Gaming Hub"] },
-  { id:53, brand:"Samsung", series:"OLED 4K", storage:77, name:"Samsung 77S95F 77\" 4K OLED Smart TV", colorName:"OLED", origPrice:209499, price:167599, img:'/shop/images/products/Samsung 77S95F 77" 4K OLED Smart TV.jpeg', dots:["#111827", "#a855f7", "#ec4899"], dc:"4", isNew:true, specs:["77 inç ekran", "4K Ultra HD", "OLED panel", "165 Hz VRR", "NQ4 AI Gen3 işlemci", "Tizen Smart TV", "HDR10+"] }
+  { id:53, brand:"Samsung", series:"OLED 4K", storage:77, name:"Samsung 77S95F 77\" 4K OLED Smart TV", colorName:"OLED", origPrice:209499, price:167599, img:'/shop/images/products/Samsung 77S95F 77" 4K OLED Smart TV.jpeg', dots:["#111827", "#a855f7", "#ec4899"], dc:"4", isNew:true, specs:["77 inç ekran", "4K Ultra HD", "OLED panel", "165 Hz VRR", "NQ4 AI Gen3 işlemci", "Tizen Smart TV", "HDR10+"] },
+  { id:54, brand:"Sony", series:"PlayStation 5 Pro", storage:2000, name:"Sony Ps5 Pro 30TH Anniversary Console Bundle Limited Edition 2 Tb SSD", colorName:"30TH Anniversary", origPrice:362248.75, price:289799, img:'/shop/images/products/the-playstation-5-pro-console-30th-anniversary-limited.JPG', sku:'SNYPS530TH2TB', isNew:true,
+    colors:[{n:'30TH Anniversary',img:'/shop/images/products/the-playstation-5-pro-console-30th-anniversary-limited.JPG'}],
+    dots:['#d4c6a1','#e5e7eb','#111827'], dc:'1', fallback:'/shop/images/products/the-playstation-5-pro-console-30th-anniversary-limited.JPG',
+    specs:[
+      ['Kategori','Oyun Konsolları'],['Depolama','2 TB SSD'],['Sürüm','PS5 Pro 30. Yıl Dönümü Sınırlı Sayıda Paket'],['Konsol','Dijital / disksiz'],['Adet','Dünya genelinde 12.300 adet numaralı koleksiyon ürünü'],['Aksesuar','1x DualSense, 1x DualSense Edge, şarj istasyonu, dikey stand, disk sürücüsü kapağı'],['Bağlantı','İnternet bağlantısı ve PlayStation Network hesabı gerekir'],['Teslimat','Ücretsiz standart kargo / teslimatta imza gerekli'],['İade','30 gün iade, değişim ve iade desteği']
+    ] },
+  { id:55, brand:"Bambu Games", series:"4K Kiosk", storage:60, name:"Bambu Games Dijital Oyun Masası (Hayalet Ekranlı) 60+ Oyun 4K Kiosk", colorName:"Hayalet Ekranlı", origPrice:286250, price:229000, img:'/shop/images/products/Bambu Games Dijital Oyun Masası Oyun 4K Kiosk.jpg', sku:'BMBGKIOSK4K60', isNew:true,
+    colors:[{n:'Standart',img:'/shop/images/products/Bambu Games Dijital Oyun Masası Oyun 4K Kiosk.jpg'}],
+    dots:['#111827','#0ea5e9','#14b8a6'], dc:'1', fallback:'/shop/images/products/Bambu Games Dijital Oyun Masası Oyun 4K Kiosk.jpg',
+    specs:[
+      ['Kategori','Oyun Konsolları'],['Ekran','43 inç Ultra HD 4K VA panel / dokunmatik temperli cam'],['Oyun Sayısı','60+ hazır kurulu oyun'],['Gövde','Su geçirmez çelik kasa'],['Ölçüler','80 x 120 x 76 cm'],['Ağırlık','100 kg'],['Güç','180 - 250 W'],['Güncelleme','Ücretsiz uzaktan güncelleme'],['Destek','7/24 teknik servis'],['Garanti','1 yıl resmi distribütör garantisi']
+    ] },
+  { id:56, brand:"PXN", series:"Racing Simulator", storage:34, name:"Pxn Profesyonel Yarış Simülatörü Kokpiti + Innocn 34\" Ultrawide OLED 165Hz Curved Gaming Monitör Seti", colorName:"OLED / Sport", origPrice:99998.75, price:79999, img:'/shop/images/products/Pxn Profesyonel Yarış Simülatörü Kokpiti.jpg', sku:'PXNGTM34OLED', isNew:true,
+    colors:[{n:'Standart',img:'/shop/images/products/Pxn Profesyonel Yarış Simülatörü Kokpiti.jpg'}],
+    dots:['#111827','#ef4444','#f59e0b'], dc:'1', fallback:'/shop/images/products/Pxn Profesyonel Yarış Simülatörü Kokpiti.jpg',
+    specs:[
+      ['Kategori','Oyun Konsolları'],['Set İçeriği','PXN GT-M yarış kokpiti + INNOCN 34M1R OLED monitör'],['Monitör','34 inç / 21:9 UltraWide OLED / curved'],['Yenileme Hızı','165 Hz'],['Stand Malzemesi','Güçlendirilmiş karbon çelik'],['Koltuk','Ayarlanabilir yarış tipi spor koltuk'],['Uyumluluk','Logitech, Thrustmaster, Fanatec ve benzeri direksiyon setleri'],['Kutu İçeriği','Kokpit gövdesi, monitör, bağlantı aparatları, kablolar, montaj ekipmanları']
+    ] }
 ];
 
 // ── STATE ──
@@ -1821,11 +1843,12 @@ function toggleService(productId, serviceKey){
 
 // ── RENDER ──
 function getProductCategory(p){
+  if (/PlayStation|PS5|Konsol|Kokpit|Simülatör|Oyun Masası|Kiosk/i.test(p.name)) return 'console';
   return /\bTV\b/i.test(p.name) ? 'tv' : 'phone';
 }
 
 function getBrandGroup(p){
-  return ['Apple','Samsung','Xiaomi','LG','TCL'].includes(p.brand) ? p.brand : 'Other';
+  return ['Apple','Samsung','Sony','PXN','Bambu Games','Xiaomi','LG','TCL'].includes(p.brand) ? p.brand : 'Other';
 }
 
 function getFilteredProducts() {
